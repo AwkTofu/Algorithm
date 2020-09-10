@@ -1,7 +1,8 @@
 //let testArr = [1, 3, 5, 7, 8, 9, 20, 42, 64]
-let testMoney = 0.23;
+let testMoney = 6.27;
 
 let bills = {
+	hundredDollar: 100.0,
 	tenDollar: 10.0,
 	fiveDollar: 5.0,
 	oneDollar: 1.0,
@@ -17,9 +18,6 @@ let FindingChange = (currency, amount) => {
 
 	for (let key in currency)
 	{
-		console.log(key, " -> ", currency[key])
-
-		console.log(currency[key], ">" ,cashLeftover, currency[key] > cashLeftover)
 		while (cashLeftover >= currency[key])
 		{
 			if (resultBills[key])
@@ -30,12 +28,10 @@ let FindingChange = (currency, amount) => {
 			{
 				resultBills[key] = 1;
 			}
-			console.log("Math", cashLeftover, currency[key])
 			cashLeftover = (cashLeftover - currency[key]).toFixed(2)
 		}
 	}
-	console.log("Final Result", resultBills)
+	return resultBills;
 }
 
-console.log((6.26 - 5.00).toFixed(2))
 FindingChange(bills, testMoney);
